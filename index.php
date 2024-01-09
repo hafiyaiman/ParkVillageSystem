@@ -42,7 +42,7 @@ unset($_SESSION['notification']);  // Clear the session variable
     <link rel="stylesheet" href="loginStyle.css">
     <link rel="icon" href="img\dparkvillage.ico" type="image/x-icon">
     <title>Park Village Booking System</title>
-    <style>  
+    <style>
     </style>
 </head>
 
@@ -55,15 +55,16 @@ unset($_SESSION['notification']);  // Clear the session variable
                 <br>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <a href="#">Forget Your Password?</a>
+                <a href="forgotPass.php">Forget Your Password?</a>
                 <button type="submit">Sign In</button>
-                <p>Don't have an account? <a href="register.php" id="registerLink" style="color: #0000FF;" >Register here</a>.</p>
-                        <!-- Display notification -->
-                        <?php if (!empty($notification)): ?>
-    <div id="notification" class="notification">
-        <?php echo $notification; ?>
-    </div>
-<?php endif; ?>
+                <p>Don't have an account? <a href="register.php" id="registerLink" style="color: #0000FF;">Register
+                        here</a>.</p>
+                <!-- Display notification -->
+                <?php if (!empty($notification)): ?>
+                    <div id="notification" class="notification">
+                        <?php echo $notification; ?>
+                    </div>
+                <?php endif; ?>
 
             </form>
 
@@ -85,24 +86,24 @@ unset($_SESSION['notification']);  // Clear the session variable
     </div>
 
     <script>
-//         const container = document.getElementById('container');
-// const registerBtn = document.getElementById('register');
-// const loginBtn = document.getElementById('login');
+        //         const container = document.getElementById('container');
+        // const registerBtn = document.getElementById('register');
+        // const loginBtn = document.getElementById('login');
 
-// registerBtn.addEventListener('click', () => {
-//     container.classList.add("active");
-// });
+        // registerBtn.addEventListener('click', () => {
+        //     container.classList.add("active");
+        // });
 
-// loginBtn.addEventListener('click', () => {
-//     container.classList.remove("active");
-// });
+        // loginBtn.addEventListener('click', () => {
+        //     container.classList.remove("active");
+        // });
 
-setTimeout(function () {
-                var notification = document.getElementById('notification');
-                if (notification) {
-                    notification.style.display = 'none';
-                }
-            }, 2000);
+        setTimeout(function () {
+            var notification = document.getElementById('notification');
+            if (notification) {
+                notification.style.display = 'none';
+            }
+        }, 2000);
     </script>
 </body>
 

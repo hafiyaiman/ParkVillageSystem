@@ -1,0 +1,79 @@
+CREATE TABLE booking (
+    Book_ID INT PRIMARY KEY,
+    Book_Reff_num INT(10),
+    Cust_ID INT(11),
+    Vehicle_ID INT(11),
+    Payment_ID INT(11),
+    Date_IN DATE,
+    Date_OUT DATE,
+    KLIA VARCHAR(10),
+    Depart_no VARCHAR(20),
+    Arrive_no VARCHAR(20),
+    status_booking VARCHAR(50),
+    date_booking DATE,
+    FOREIGN KEY (Cust_ID) REFERENCES customer(Cust_ID),
+    FOREIGN KEY (Payment_ID) REFERENCES payment(Payment_ID)
+);
+
+CREATE TABLE users (
+    User_ID INT(11) PRIMARY KEY,
+    username VARCHAR(50),
+    email VARCHAR(20),
+    password VARCHAR(20),
+    role VARCHAR(20)
+);
+
+CREATE TABLE customer (
+    Cust_ID INT(11) PRIMARY KEY,
+    Name VARCHAR(50),
+    Pnum INT(15),
+    User_ID INT(11),
+    Address VARCHAR(50),
+    Book_ID INT,
+    deposit_paid INT,
+    FOREIGN KEY (User_ID) REFERENCES users(User_ID),
+    FOREIGN KEY (Book_ID) REFERENCES booking(Book_ID)
+);
+
+
+
+CREATE TABLE vehicle (
+    Vehicle_ID INT PRIMARY KEY,
+    Cust_ID INT(11),
+    Model VARCHAR(50),
+    Color VARCHAR(20),
+    Plate_Number VARCHAR(10),
+Book_ID INT(11),
+    FOREIGN KEY (Cust_ID) REFERENCES customer(Cust_ID)
+);
+
+CREATE TABLE parking (
+    park_id INT PRIMARY KEY,
+    parking_type VARCHAR(50),
+    numpark_available INT(11),
+    price INT(11),
+    description VARCHAR(50)  
+);
+
+
+CREATE TABLE payment (
+    Payment_ID INT PRIMARY KEY,
+    Cust_ID INT(11),
+    Book_ID INT(11),
+    Amount DECIMAL(10, 2),
+    Transaction_ID VARCHAR(50),
+    Payment_Method VARCHAR(20),
+    payment_status VARCHAR(20) DEFAULT 'Pending',
+    FOREIGN KEY (Cust_ID) REFERENCES customer(Cust_ID),
+    FOREIGN KEY (Book_ID) REFERENCES booking(Book_ID)
+);
+
+CREATE TABLE parking_availability (
+    availability_id INT PRIMARY KEY,
+    Cust_ID INT(11)
+    parking_type VARCHAR(50),
+    date_start DATE,
+    date_end DATE,
+    FOREIGN KEY (Cust_ID) REFERENCES booking(Book_ID)	
+);
+
